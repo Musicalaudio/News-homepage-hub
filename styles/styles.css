@@ -38,9 +38,9 @@
 
 body{
   --bg-clr: hsl(var(--neutral-off-white));
-  margin-inline: var(--space-s-m);
   font-family: 'Inter', sans-serif;
-  font-size: var(--step-0);
+  /* font-size: var(--step-1); */
+  font-size: 0.9375rem;
   background-color: var(--bg-clr);
 }
 
@@ -54,10 +54,23 @@ p{
   line-height: 1.7;
 }
 
+a:hover{
+  color: hsl(var(--primary-soft-red));
+}
+
 h1{
   font-size: var(--step-5);
   line-height: 1;
   font-weight: var(--fw-extra-bold);
+}
+
+h3 a{
+  color: inherit;
+  text-decoration: none;
+}
+
+picture{
+  width: 100%;
 }
 
 /* blocks */
@@ -72,22 +85,19 @@ h1{
   color: hsl(var(--neutral-dark-blue));
 }
 
-@media (min-width: 700px){
-  body{
-    /* should I use a wrapper class for this? */
-    padding-inline: 5rem;
-    max-width: 1200px;
-    margin-inline: auto
-  }
+.menu-btn{
+  display: none;
+}
 
+@media (min-width: 700px){
   .navbar ul{
     display: flex;
     max-width: 700px;
     justify-content: space-evenly;
   }
 
-  .navbar li{
-    margin-left: 1rem;
+  .navbar li:not(:first-child){
+    margin-left: 1.4rem;
   }
 
   .navbar a{
@@ -95,16 +105,41 @@ h1{
   }
 }
 
-/* @media (max-width: 700px) {
+@media (max-width: 700px) {
   .navbar ul{
+    /* display: none; */
     position: fixed;
     inset: 0 0 0 35%;
     background-color: var(--bg-clr);
     color: hsl(var(--neutral-dark-blue));
     padding-inline-start: var(--space-m-l);
     padding-top: min(7.5em, 40vh);
+    transform: translateX(100%);
+    transition: transform 700ms ease-in-out;
   }
-} */
+
+  .navbar ul[data-visible="true"]{
+    transform: translateX(0);
+  }
+
+  .menu-btn{
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    right: 1rem;
+    top: 2rem;
+    background: transparent;
+    background-image: url(../assets/images/icon-menu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 1.5rem;
+    aspect-ratio: 1;
+  }
+
+  .menu-btn[aria-expanded="true"]{
+    background-image: url(../assets/images/icon-menu-close.svg);
+  }
+}
 
 .hero__title{
   font-size: 2.65rem;
@@ -114,6 +149,7 @@ h1{
 
 .read-more{
   padding: 1em 2.4em;
+  max-width: fit-content;
   background-color: hsl(var(--primary-soft-red));
   color: hsl(var(--neutral-off-white));
   text-transform: uppercase;
@@ -122,34 +158,134 @@ h1{
   display: inline-block;
 }
 
+.read-more:hover{
+  cursor: pointer;
+  background-color: hsl(var(--neutral-dark-blue));
+}
+
 .new-news{
-  padding: var(--space-m-l);
+  /* padding: var(--space-s-m); */
+  padding-inline: var(--space-s-m);
 }
 
 .dark-section{
+  --title-color: hsl(var(--primary-soft-orange));
   background-color: hsl(var(--neutral-dark-blue));
   color: hsl(var(--neutral-off-white));
 }
 
 .dark-section h2{
-  color: hsl(var(--primary-soft-orange))
+  color: var(--title-color);
+}
+
+.dark-section a:hover{
+  color: var(--title-color);
+}
+
+@media (min-width:700px){
+  main{
+    display: grid;
+    grid-template-areas: "hero hero new"
+                         "hero hero new"
+                         "other other other"; 
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4.5rem 1.5rem; 
+  }
+
+  .hero{
+    grid-area: hero;
+    display: grid;
+    grid-template-areas: "image image"
+                         "image image"
+                         "title desc"
+                         "title desc";
+    gap: 1.75rem;
+  }
+
+  .hero__img{
+    grid-area: image;
+  }
+
+  .hero__title{
+    font-size: 3.5rem;
+    grid-area: title;
+  }
+  
+  .hero__desc{
+    grid-area: desc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .new-news{
+    grid-area: new;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  .new-news h2{
+    font-size: 2rem;
+    margin-block-end: 1.2rem;
+  }
+
+  .new-news h3{
+    /* margin-block: 1rem .35rem; */
+  }
+
+  .new-news__list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .new-news__list li{
+    /* display: grid; */
+    
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* margin-block: center; */
+    /* margin-block: auto; */
+    padding-block: 1rem;
+  }
+
+  .new-news__list li:not(:first-child){
+    border-top: 1.5px solid hsl(var(--neutral-dark-grayish-blue), .5);
+  }
+
+  .other-news{
+    grid-area: other;
+  }
+
+  .other-news__list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .other-news__list img{
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .other-news__text{
+    display: grid;
+    align-content: space-between;
+  } 
+
 }
 
 /* composition */
-.burger{
+/* .burger{
   display: grid;
   grid-auto-rows: auto 1fr auto;
-}
+} */
 
-.stack-sm{
+.stack{
   display: grid;
   align-content: start;
-  gap: var(--stack-gap-sm, .6em);
-}
-
-.stack-md{
-  display: grid;
-  gap: var(--stack-gap-md, 1em);  
+  gap: var(--stack-gap, .6em);
 }
 
 .grid-2-col{
@@ -166,60 +302,15 @@ h1{
   align-items: var(--cluster-vertical-alignment, center);
 }
 
-
-@media (min-width:700px){
-  main{
-    display: grid;
-    grid-template-areas: "hero hero new"
-                         "hero hero new"
-                         "other other other"; 
-    /* grid-template-rows: 4fr 1fr; */
-    /* grid-template-columns: 2fr 1fr; */
-    gap: 4.5rem 1.5rem; 
-  }
-
-  .hero{
-    grid-area: hero;
-  }
-
-  .hero__img{
-    height: 50%;
-    object-fit: contain;
-  }
-
-  .hero__title{
-    font-size: 3rem;
-  }
-
-  .new-news{
-    grid-area: new;
-  }
-
-  .new-news__list{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .other-news{
-    grid-area: other;
-  }
-
-  .other-news__list{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .other-news__text{
-    display: grid;
-    align-content: space-between;
-  } 
-
-}
-
 /* utilities */
 .flow > * + * {
   margin-top: var(--flow-space, 1em);
+}
+
+.wrapper{
+  padding-inline: 5rem;
+  max-width: 75rem;
+  margin-inline: auto
 }
 
 .number{
@@ -228,7 +319,7 @@ h1{
   color: hsl(var(--neutral-grayish-blue));
 }
 
-.visually-hidden {
+.sr-only {
   border: 0;
   clip: rect(0 0 0 0);
   height: 0;
