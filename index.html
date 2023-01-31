@@ -18,12 +18,12 @@
   <!-- javascript -->
   <script src="./main.js" defer></script>
 </head>
-<body class="burger wrapper">
+<body class="[ burger ] [ wrapper bg-light ] ">
   <header>
     <nav class="navbar">
       <a href="#" aria-label="W-News - Home"><img src="./assets/images/logo.svg" alt="'W.' logo "></a>
       <button class="menu-btn" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
-      <ul role="list" data-visible="false" id="primary-navigation" class="[ stack ]">
+      <ul role="list" data-visible="false" id="primary-navigation" class="[ stack ] [ bg-light ]">
         <li><a href="#">Home</a></li>
         <li><a href="#">New</a></li>
         <li><a href="#">Popular</a></li>
@@ -32,9 +32,9 @@
       </ul>
     </nav>
   </header>
-  <main>
+  <main class="grid">
     <h1 class="sr-only">News Homepage</h1>
-    <section class="hero">
+    <section class="[ hero ] [ ]">
       <picture class="hero__img">
         <source srcset="./assets/images/image-web-3-desktop.jpg" media="(min-width: 700px)"/>
         <img src="./assets/images/image-web-3-mobile.jpg" alt="Abstract Image representing Web-3">
@@ -45,7 +45,7 @@
         <a class="read-more">Read more</a>
       </div>
     </section>
-    <section class="[ new-news ] [ dark-section ]">
+    <section class="[ new-news dark-section ] [ stack ] [ bg-dark ]">
       <h2>New</h2>
       <ul role="list" class="new-news__list">
         <li>
