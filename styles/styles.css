@@ -44,6 +44,7 @@ body{
 
 main{
   --grid-gap: 3rem;
+  --vertical-gap: 2rem;
   grid-template-rows: "auto auto auto";
 }
 
@@ -110,7 +111,6 @@ picture{
 
 @media (max-width: 700px) {
   .navbar ul{
-    /* display: none; */
     position: fixed;
     inset: 0 0 0 35%;
     color: hsl(var(--neutral-dark-blue));
@@ -128,19 +128,24 @@ picture{
     display: block;
     position: absolute;
     z-index: 9999;
-    right: 1rem;
+    right: min(5vw, 5rem);
     top: 2rem;
     background: transparent;
     background-image: url(../assets/images/icon-menu.svg);
     background-repeat: no-repeat;
     background-position: center;
-    width: 1.5rem;
+    width: 2rem;
     aspect-ratio: 1;
   }
 
   .menu-btn[aria-expanded="true"]{
+    position: fixed;
     background-image: url(../assets/images/icon-menu-close.svg);
   }
+}
+
+.hero{
+  --grid-gap: .8rem;
 }
 
 .hero__title{
@@ -167,7 +172,7 @@ picture{
 
 .new-news{
   --grid-gap: 1rem;
-  padding: var(--space-s-m);
+  padding: var(--space-m-l) var(--space-xs-s);
   display: grid;
   grid-template-rows: auto 1fr;
 }
@@ -179,7 +184,8 @@ picture{
 } */
 
 .new-news__list li{
-    padding-block: 1rem;
+  --grid-gap: var(--space-3xs-2xs);
+  padding-block: 1rem;
 }
 
 .new-news__list li:not(:first-child){
@@ -199,6 +205,10 @@ picture{
   color: var(--title-color);
 }
 
+.other-news__list{
+  --grid-gap: var(--vertical-gap);
+}
+
 @media (min-width:700px){
   main{
     grid-template-areas: "hero hero new"
@@ -206,7 +216,7 @@ picture{
                          "other other other"; 
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    --grid-gap: 4.5rem 1.5rem; 
+    --grid-gap: 4.5rem var(--vertical-gap); 
   }
 
   .hero{
@@ -241,7 +251,7 @@ picture{
 
   .new-news h2{
     font-size: 2rem;
-    margin-block-end: 1.2rem;
+    /* margin-block-end: 1.2rem; */
   }
 
   .other-news{
@@ -249,9 +259,8 @@ picture{
   }
 
   .other-news__list{
-    display: grid;
+    --grid-flow: column; 
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
   }
 
   .other-news__list img{
