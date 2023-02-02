@@ -18,7 +18,8 @@
   --step-0: clamp(0.94rem, calc(0.94rem + 0.00vw), 0.94rem);
   --step-1: clamp(1.13rem, calc(1.11rem + 0.07vw), 1.17rem);
   --step-2: clamp(1.35rem, calc(1.31rem + 0.17vw), 1.47rem);
-  --step-3: clamp(1.62rem, calc(1.55rem + 0.32vw), 1.83rem);
+  /* --step-3: clamp(1.62rem, calc(1.55rem + 0.32vw), 1.83rem); */
+  --step-3: clamp(1.62rem, calc(1.26rem + 1.55vw), 2.65rem);
   --step-4: clamp(1.94rem, calc(1.82rem + 0.52vw), 2.29rem);
   --step-5: clamp(2.33rem, calc(2.15rem + 0.79vw), 2.86rem);
 
@@ -63,9 +64,13 @@ a:hover{
 }
 
 h1{
-  font-size: var(--step-5);
+  /* font-size: var(--step-5); */
   line-height: 1;
   font-weight: var(--fw-extra-bold);
+}
+
+h3{
+  font-size: var(--step-1);
 }
 
 h3 a{
@@ -73,9 +78,9 @@ h3 a{
   text-decoration: none;
 }
 
-picture{
+/* picture{
   width: 100%;
-}
+} */
 
 /* blocks */
 .navbar{
@@ -111,6 +116,7 @@ picture{
 
 @media (max-width: 700px) {
   .navbar ul{
+    display: none;
     position: fixed;
     inset: 0 0 0 35%;
     color: hsl(var(--neutral-dark-blue));
@@ -121,6 +127,7 @@ picture{
   }
 
   .navbar ul[data-visible="true"]{
+    display: block;
     transform: translateX(0);
   }
 
@@ -171,21 +178,25 @@ picture{
 }
 
 .new-news{
-  --grid-gap: 1rem;
-  padding: var(--space-m-l) var(--space-xs-s);
+  padding-inline: var(--space-s-m);
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
-/* .new-news__list{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-} */
+.new-news h2{
+  font-size: var(--step-3);
+  margin-block-start: var(--space-xs-s);
+}
+
+.new-news__list{
+  display: grid;
+  align-items: center;
+  align-content: end;
+}
 
 .new-news__list li{
   --grid-gap: var(--space-3xs-2xs);
-  padding-block: 1rem;
+  padding-block: 1.5rem;
 }
 
 .new-news__list li:not(:first-child){
@@ -249,11 +260,6 @@ picture{
     grid-area: new;
   }
 
-  .new-news h2{
-    font-size: 2rem;
-    /* margin-block-end: 1.2rem; */
-  }
-
   .other-news{
     grid-area: other;
   }
@@ -276,10 +282,10 @@ picture{
 }
 
 /* composition */
-/* .burger{
+.burger{
   display: grid;
   grid-auto-rows: auto 1fr auto;
-} */
+}
 
 .grid{
   display: grid;
