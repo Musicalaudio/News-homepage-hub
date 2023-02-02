@@ -37,6 +37,25 @@
   --space-3xl-4xl: clamp(5.63rem, calc(3.97rem + 7.04vw), 10.31rem);
 }
 
+/* add local fonts */
+@font-face {
+  font-family: 'Inter';
+  src: url(../assets/fonts/Inter-VariableFont_slnt\,wght.ttf) format('truetype');
+  font-weight: var(--fw-reg);
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url(../assets/fonts/Inter-VariableFont_slnt\,wght.ttf) format('truetype');
+  font-weight: var(--fw-bold);
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url(../assets/fonts/Inter-VariableFont_slnt\,wght.ttf) format('truetype');
+  font-weight: var(--fw-extra-bold);
+}
+
 body{
   font-family: 'Inter', sans-serif;
   /* font-size: var(--step-1); */
