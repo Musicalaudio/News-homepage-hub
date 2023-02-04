@@ -235,6 +235,12 @@ h3 a{
   --grid-gap: var(--vertical-gap);
 }
 
+.other-news__text{
+  --grid-flow: row;
+  --grid-gap: none;
+  align-content: space-between;
+} 
+
 @media (min-width:700px){
   main{
     grid-template-areas: "hero hero new"
@@ -286,12 +292,6 @@ h3 a{
     height: 100%;
     object-fit: cover;
   }
-
-  .other-news__text{
-    display: grid;
-    align-content: space-between;
-  } 
-
 }
 
 /* composition */
