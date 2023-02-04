@@ -266,9 +266,7 @@ h3 a{
   
   .hero__desc{
     grid-area: desc;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    grid-template-rows: 1fr auto;
   }
 
   .new-news{
