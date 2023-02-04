@@ -114,10 +114,10 @@ h3 a{
   display: none;
 }
 
-@media (min-width: 700px){
+@media (min-width: 43.75em){
   .navbar ul{
     display: flex;
-    max-width: 700px;
+    max-width: 43.75rem;
     justify-content: space-evenly;
   }
 
@@ -130,7 +130,7 @@ h3 a{
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75em) {
   .navbar ul{
     display: none;
     position: fixed;
@@ -241,7 +241,7 @@ h3 a{
   align-content: space-between;
 } 
 
-@media (min-width:700px){
+@media (min-width: 43.75em){
   main{
     grid-template-areas: "hero hero new"
                          "hero hero new"
