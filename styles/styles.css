@@ -12,6 +12,9 @@
   --fw-bold: 700;
   --fw-extra-bold: 800;
 
+  /* color on hover */
+  --hover-color: hsl(var(--primary-soft-red));
+
   /* font size */
   --step--2: clamp(0.60rem, calc(0.67rem + -0.08vw), 0.65rem);
   --step--1: clamp(0.75rem, calc(0.79rem + -0.05vw), 0.78rem);
@@ -78,8 +81,8 @@ p{
   line-height: 1.7;
 }
 
-a:hover{
-  color: hsl(var(--primary-soft-red));
+a{
+  text-decoration: none;
 }
 
 h1{
@@ -94,12 +97,7 @@ h3{
 
 h3 a{
   color: inherit;
-  text-decoration: none;
 }
-
-/* picture{
-  width: 100%;
-} */
 
 /* blocks */
 .navbar{
@@ -109,7 +107,6 @@ h3 a{
 }
 
 .navbar a {
-  text-decoration: none;
   color: hsl(var(--neutral-dark-blue));
 }
 
@@ -210,7 +207,6 @@ h3 a{
 .new-news__list{
   display: grid;
   align-items: center;
-  align-content: end;
 }
 
 .new-news__list li{
@@ -231,8 +227,8 @@ h3 a{
   color: var(--title-color);
 }
 
-.dark-section a:hover{
-  color: var(--title-color);
+.dark-section a{
+  --hover-color: var(--title-color)
 }
 
 .other-news__list{
@@ -251,12 +247,12 @@ h3 a{
 
   .hero{
     grid-area: hero;
-    display: grid;
     grid-template-areas: "image image"
                          "image image"
                          "title desc"
                          "title desc";
-    gap: 1.75rem;
+    grid-template-columns: 1fr 1fr;
+    --grid-gap: 1.75rem var(--vertical-gap); 
   }
 
   .hero__img{
@@ -341,6 +337,10 @@ h3 a{
   position: absolute;
   width: 1px;
   white-space: nowrap;
+}
+
+.hover-color:hover{
+  color: var(--hover-color, hsl(var(--primary-soft-red)));
 }
 
 /* color utilities */
